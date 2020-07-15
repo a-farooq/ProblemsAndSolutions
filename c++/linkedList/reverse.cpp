@@ -44,9 +44,27 @@ struct Node
 
 */
 
+struct Node* reverseList(struct Node *head)
+{
+    if(!head) return head;
+    
+    Node* p1 = NULL;
+    Node* p2 = head;
+    Node* p3 = p2->next;
+    
+    while(p2) 
+    {
+        p3 = p2->next;
+        p2->next = p1;
+        p1 = p2;
+        p2 = p3;
+    }
+    return p1;
+}
+
 typedef struct Node NODE;
 // Should reverse list and return new head.
-struct Node* reverseList(struct Node *head)
+struct Node* reverseList2(struct Node *head) //another approach
 {
     // code here
     if(head == NULL || head->next == NULL)
