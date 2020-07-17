@@ -48,7 +48,70 @@ Testcase 2: After arranging all the 0s,1s and 2s in the given format, the output
 };
 
 */
+
+//approach1 - manipulate only the links
 Node* segregate(Node *head) {
+    if(!head) return head;
+    
+    Node* zero = NULL;
+    Node* one = NULL;
+    Node* two = NULL;
+    Node* zeroL = NULL;
+    Node* oneL = NULL;
+    Node* twoL = NULL;
+    Node* tmp = head;
+    
+    while(head)
+    {
+        //cout << head->data << endl;
+        if(head->data == 0) {
+            head = head->next;
+            tmp->next = zero;
+            zero = tmp;
+            tmp = head;
+            if(!zeroL) zeroL = zero;
+            //cout << "0--" << zero->data << endl;
+        }
+        
+        else if(head->data == 1) {
+            head = head->next;
+            tmp->next = one;
+            one = tmp;
+            tmp = head;
+            if(!oneL) oneL = one;
+        }
+        
+        else if(head->data == 2) {
+            head = head->next;
+            tmp->next = two;
+            two = tmp;
+            tmp = head;
+            if(!twoL) twoL = two;
+        }
+    }
+    
+    if(zero) {
+        head = zero;
+        if(one) {
+            zeroL->next = one;
+            if(two)
+                oneL->next = two;
+        }
+        else if(two) zeroL->next = two;
+    }
+    else if(one) {
+        head = one;
+        if(two)
+            oneL->next = two;
+    }
+    else if(two) {
+        head = two;
+    }
+    return head;
+}
+
+//approach2 - manipulate only the data
+Node* segregate2(Node *head) {
     if(!head) return head;
     
     Node* p1 = head;
