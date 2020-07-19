@@ -91,6 +91,41 @@ struct node *reverse (struct node *head, int k)
     node* newtail = NULL;
     node* oldtail = NULL;
     node* reshead = NULL;
+    node* prevtail = NULL;
+    
+    while(head) {
+        
+        node* p1 = NULL;
+        node* p2 = head;
+        node* p3 = NULL;
+        int count = 0;
+        
+        while(p2 && count < k) {
+            p3 = p2->next;
+            p2->next = p1;
+            p1 = p2;
+            p2 = p3;
+            count++;
+        }
+
+        if(prevtail) prevtail->next = p1;
+        else newhead = p1;
+        
+        prevtail = head;
+        
+        head->next = NULL;
+        head = p2;
+    }
+    return newhead;
+}
+
+struct node *reverse2 (struct node *head, int k)
+{ 
+    // Complete this method
+    node* newhead = NULL;
+    node* newtail = NULL;
+    node* oldtail = NULL;
+    node* reshead = NULL;
     
     while(head) {
         int k2 = k;
