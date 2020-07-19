@@ -54,7 +54,51 @@ struct Node {
   }
 }; */
 
+/* Should return data of intersection point of two linked
+   lists head1 and head2.
+   If there is no intersecting point, then return -1. */
 int intersectPoint(Node* head1, Node* head2)
+{
+    // Your Code Here
+    int c1 = 0, c2 = 0;
+    Node* p1 = head1;
+    while(head1) {
+        c1++;
+        head1 = head1->next;
+    }
+    
+    Node* p2 = head2;
+    while(head2) {
+        c2++;
+        head2 = head2->next;
+    }
+    
+    if(c1 >= c2) {
+        int d = c1 - c2;
+        while(d) {
+            p1 = p1->next;
+            d--;
+        }
+    }
+    else {
+        int d = c2 - c1;
+        while(d) {
+            p2 = p2->next;
+            d--;
+        }
+    }
+    
+    while(p1 && p2 && p1 != p2) {
+        p1 = p1->next;
+        p2 = p2->next;
+    }
+    if(p1) return p1->data;
+    else return -1;
+    return -1;
+}
+
+//another approach
+int intersectPoint2(Node* head1, Node* head2)
 {
     while(head1) {
         if(head1->data == 0) head1->data = 1001;
