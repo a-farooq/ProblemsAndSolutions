@@ -9,8 +9,8 @@ Print the missing number in array.
 
 Constraints:
 1 ≤ T ≤ 200
-1 ≤ N ≤ 107
-1 ≤ C[i] ≤ 107
+1 ≤ N ≤ 10^7
+1 ≤ C[i] ≤ 10^7
 
 Example:
 Input:
