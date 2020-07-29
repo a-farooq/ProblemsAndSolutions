@@ -16,7 +16,7 @@ class Family
 public:
     Family() : name(FATHER) {}
 
-    string getName()
+    string getName() const
     {
         switch(name) {
             case FATHER: return "FATHER"; break;
@@ -35,7 +35,25 @@ public:
             case SON: name = FATHER; break;
         }
     }
+    
+    void operator++(int)
+    {
+        switch(name) {
+            case FATHER: name = MOTHER; break;
+            case MOTHER: name = DAUGHTER; break;
+            case DAUGHTER: name = SON; break;
+            case SON: name = FATHER; break;
+        }
+    }
+
+    friend ostream& operator << (ostream& out, const Family& f);
 };
+
+ostream& operator << (ostream& out, const Family& f)
+{
+    out << f.getName();
+    return out;
+}
 
 int main()
 {
@@ -43,6 +61,7 @@ int main()
     cout << f1.getName() << endl;
     ++f1;
     ++f1;
-    ++f1;
-    cout << f1.getName() << endl;
+    f1++;
+    //cout << f1.getName() << endl;
+    cout << f1 << endl;
 }
