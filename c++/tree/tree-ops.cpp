@@ -32,6 +32,8 @@ class Tree
         Node* newNode = new Node(data);
         return newNode;
     }
+    
+    void preorderUtil(Node* root, vector<int>&);
 public:
     Tree(int data)
     {
@@ -57,6 +59,8 @@ public:
     vector<int> postOrder(Node*);
     
     vector<int> inOrder(Node* root);
+    
+    vector <int> preOrder(Node* root);
     
     int getSize(Node*);
 };
@@ -107,6 +111,12 @@ int main(int argc, const char * argv[]) {
         cout << node << " ";
     cout << endl;
     
+    cout << "Preorder traversal" << endl;
+    vec = tree.preOrder(root);
+    for(auto node : vec)
+        cout << node << " ";
+    cout << endl;
+    
     if(isIdentical(root, n1)) cout << "Identical" << endl;
     else cout << "Not Identical" << endl;
     
@@ -145,5 +155,23 @@ vector<int> Tree::inOrder(Node* root)
     for(auto i : tmp)
         vec.push_back(i);
     
+    return vec;
+}
+
+void Tree::preorderUtil(Node* root, vector<int> &vec)
+{
+  // Your code here
+    if(!root) return;
+    
+    vec.push_back(root->data);
+    preorderUtil(root->left, vec);
+    preorderUtil(root->right, vec);
+}
+
+vector <int> Tree::preOrder(Node* root)
+{
+  // Your code here
+    vector<int> vec;
+    preorderUtil(root, vec);
     return vec;
 }
