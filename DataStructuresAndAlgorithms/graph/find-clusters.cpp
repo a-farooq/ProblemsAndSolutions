@@ -58,26 +58,7 @@ using namespace std;
 *   A[]: input array
 *   N, M: Row and column of given matrix
 */
-bool vis[102][102];
 
-void dfs(vector<int> A[], int i, int j, int N, int M)
-{
-    if(vis[i][j]) return;
-    if(i < 0 || j < 0 || i == N || j == M) return;
-    
-    if(A[i][j]) {
-        vis[i][j] = true;
-        //cout << i << "--"<< j << endl;
-        dfs(A, i, j+1, N, M);
-        dfs(A, i+1, j+1, N, M);
-        dfs(A, i+1, j, N, M);
-        dfs(A, i+1, j-1, N, M);
-        dfs(A, i, j-1, N, M);
-        dfs(A, i-1, j-1, N, M);
-        dfs(A, i-1, j, N, M);
-        dfs(A, i-1, j+1, N, M);
-    }
-}
 /*
 void print_vis(int N, int M)
 {
@@ -99,25 +80,35 @@ void print_A(vector<int> A[], int N, int M)
     }
 }
 */
-int findIslands(vector<int> A[], int N, int M) {
+void dfs(vector<int> A[], int i, int j, vector<vector<bool>> &vis, int N,
+         int M) {
+    
+    if(i < 0 || j < 0 || i == N || j == M) return;
+    if(vis[i][j]) return;
+    
+    if(A[i][j]) {
+        vis[i][j] = true;
+        //cout << i << "--"<< j << endl;
+        dfs(A, i, j+1, vis, N, M); 
+        dfs(A, i+1, j+1, vis, N, M); 
+        dfs(A, i+1, j, vis, N, M); 
+        dfs(A, i+1, j-1, vis, N, M); 
+        dfs(A, i, j-1, vis, N, M); 
+        dfs(A, i-1, j-1, vis, N, M); 
+        dfs(A, i-1, j, vis, N, M); 
+        dfs(A, i-1, j+1, vis, N, M); 
+    } 
+}
 
-    // Your code here
-    //vector<vector<bool>> vis(N, vector<bool>(M, false));
-    memset(vis, false, 102*102);
-    
-    //print_vis(N, M);
-    //print_A(A, N, M);
-    
-    //dfs(A, 0, 0, N, M, vis);
+int findIslands(vector<int> A[], int N, int M) {
+    vector<vector<bool>> visited(N, vector<bool>(M, false));
     int count = 0;
-    
-    for(int i = 0; i < N; i++) {
-        for(int j = 0; j < M; j++) {
-            if(A[i][j] && !vis[i][j]) {
-                //cout << i << ", " << j << endl;
-                dfs(A, i, j, N, M);
-                //print_vis(N, M);
-                count++;
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < M; j++) {
+            if (!visited[i][j] and A[i][j]) {
+                dfs(A, i, j, visited, N, M);
+                count += 1;
             }
         }
     }
