@@ -1,0 +1,22 @@
+case1: 
+declare bool variable as
+bool done = false;
+compile normally as 
+g++ volatile.cpp
+the code works fine.
+
+case2:
+compile the code with optimization as 
+#g++ -O2 volatile.cpp
+and run it
+#./a.out
+it wont come out of while loop
+because the compiler will optimize the while loop as 
+while(true) {}
+because it sees that the done variable is declared as false and not modified in the current scope.
+
+case3:
+declare the done variable as volatile
+now repeat the case2
+it will work fine
+because the volatile keyword tells the compiler to not optimize the variable.
