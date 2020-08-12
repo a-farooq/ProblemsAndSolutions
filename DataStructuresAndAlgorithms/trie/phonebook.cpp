@@ -19,15 +19,15 @@ Example:
 Input:
 1
 3
-geeikistest geeksforgeeks geeksfortest
-geeips
+seeikistest seeksforfun seeksfortest
+seeips
 
 Output:
 
-geeikistest geeksforgeeks geeksfortest
-geeikistest geeksforgeeks geeksfortest
-geeikistest geeksforgeeks geeksfortest
-geeikistest
+seeikistest seeksforfun seeksfortest
+seeikistest seeksforfun seeksfortest
+seeikistest seeksforfun seeksfortest
+seeikistest
 0
 0
 
@@ -40,11 +40,11 @@ aboikd
 saneadeb sanadcbabdcb sanbcaccd sanbded sanccdcdbd sancdcbeceaa sanadcadeee saneabddabcdea sanbaeecdecab sanbbeeaaa saneab sanaccccbcbedce sanbabdbaecba sancaa
 sandde
 1
-geeks
-geeksforgeeks
+seeks
+seeksforfun
 3
-geeikistest geeksforgeeks geeksfortest
-geeips
+seeikistest seeksforfun seeksfortest
+seeips
 *******/
 #include <iostream>
 #include <vector>
