@@ -31,9 +31,9 @@ void operate(int (*op)(int, int), int x, int y)
 
 int main()
 {
-	int(*fptr)(int, int) = &sub;
+	int(*fptr)(int, int) = &sub; //& is optional
 
 	operate(add, 5, 4); //usage1
 	operate2(mult, 5, 4); //usage2
-	cout << fptr(5, 4) << endl; //usage3
+	cout << fptr(5, 4) << endl; //usage3, same as (*fptr)(5, 4)
 }
