@@ -33,24 +33,64 @@ Testcase 1: After reversing the list, elements are 6->5->4->3->2->1.
 Testcase 2: After reversing the list, elements are 10->9->8->7->2.
 **********/
 
-
-/* Linked List Node structure:
+#include<iostream>
+using namespace std;
+//Linked List Node structure:
 
 struct Node
 {
     int data;
     struct Node *next;
-}
 
-*/
+	Node(int d) : data(d), next(NULL) {}
+};
+
+struct Node* reverseList(struct Node *head);
+
+int main()
+{
+	int t;
+	cin >> t;
+	while(t--)
+	{
+		int n;
+		Node* head = NULL;
+		Node* curnode = NULL;
+		cin >> n;
+		while(n--)
+		{
+			int d;
+			cin >> d;
+			Node* newnode = new Node(d);
+
+			if(curnode) { curnode->next = newnode; curnode = newnode; }
+			else { curnode = newnode; head = newnode; }
+		}
+		head = reverseList(head);
+		Node* tmp = head;
+		while(tmp) {
+			cout << tmp->data << " ";
+			tmp = tmp->next;
+		}
+		cout << endl;
+		tmp = head;
+		while(tmp)
+		{
+			head = head->next;
+			delete tmp;
+			tmp = head;
+		}
+	}
+}
 
 struct Node* reverseList(struct Node *head)
 {
-    if(!head) return head;
+    //if(!head) return head;
     
     Node* p1 = NULL;
     Node* p2 = head;
-    Node* p3 = p2->next;
+    //Node* p3 = p2->next;
+    Node* p3 = NULL;
     
     while(p2) 
     {
