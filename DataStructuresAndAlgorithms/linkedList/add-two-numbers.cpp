@@ -36,9 +36,10 @@ Explanation:
 Testcase 1: For the given two linked list (4 5) and (3 4 5), after adding the two linked list resultant linked list will be (3 9 0).
 Testcase 2: For the given two linked list (6 3) and (7), after adding the two linked list resultant linked list will be (7 0).
 ***********/
+#include <iostream>
+using namespace std;
 
-/* node for linked list:
-
+// node for linked list
 struct Node {
     int data;
     struct Node* next;
@@ -48,7 +49,50 @@ struct Node {
     }
 };
 
-*/
+Node *addTwoLists(Node*, Node*);
+
+int main()
+{
+	int t;
+	cin >> t;
+	while(t--)
+	{
+		Node* temp = NULL;
+		int n1, n2;
+		cin >> n1;
+
+		int d;
+		cin >> d;
+		Node* head1 = new Node(d);
+		Node* tail1 = head1;
+		while(n1-- > 1)
+		{
+			cin >> d;
+			tail1->next = new Node(d);
+			tail1 = tail1->next;
+		}
+
+		cin >> n2;
+		cin >> d;
+		Node* head2 = new Node(d);
+		Node* tail2 = head2;
+		while(n2-- > 1)
+		{
+			cin >> d;
+			tail2->next = new Node(d);
+			tail2 = tail2->next;
+		}
+		Node *head = addTwoLists(head1, head2);
+
+		Node* tmp = head;
+		while(tmp)
+		{
+			cout << tmp->data << " ";
+			tmp = tmp->next;
+		}
+		cout << endl;
+	}
+}
 
 struct Node* reverseList(struct Node* head)
 {
