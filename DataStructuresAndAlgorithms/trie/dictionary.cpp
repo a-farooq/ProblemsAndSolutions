@@ -13,13 +13,13 @@ class Node
     vector<Node*> clist;
     bool end;
 public:
-    Node() : data('-'), prefix(""), end(false), clist(26)
+    Node() : data('-'), prefix(""), end(false), clist(26, nullptr)
     {
-		for(auto i : clist) i = nullptr;
+		//for(auto i : clist) i = nullptr;
 	}
-    Node(char ch) : data(ch), prefix(""), end(false), clist(26)
+    Node(char ch) : data(ch), prefix(""), end(false), clist(26, nullptr)
     {
-		for(auto i : clist) i = nullptr;
+		//for(auto i : clist) i = nullptr;
     }
     void SetPrefix(string str) { prefix = str; }
 
