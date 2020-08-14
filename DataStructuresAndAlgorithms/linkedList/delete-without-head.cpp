@@ -35,9 +35,9 @@ Explanation:
 Testcase 1: After deleting 1 from the linked list, we have remaining nodes as 2.
 Testcase 2: After deleting 20 from the linked list, we have remaining nodes as 10, 4 and 30.
 *******/
+#include<iostream>
+using namespace std;
 
-
-/*
 struct Node {
   int data;
   struct Node *next;
@@ -46,7 +46,45 @@ struct Node {
     next = NULL;
   }
 }*head;
-*/
+
+void deleteNode(Node*);
+
+int main()
+{
+	int t;
+	cin >> t;
+	while(t--)
+	{
+		int n, d;
+		Node* head = nullptr;
+		Node* tail = nullptr;
+		cin >> n;
+		if(n > 0) {
+			cin >> d;
+			head = new Node(d);
+			tail = head;
+		}
+
+		while(n-- > 1){
+			cin >> d;
+			tail->next = new Node(d);
+			tail = tail->next;
+		}
+		
+		cin >> d;
+		Node* tmp = head;
+		while(tmp->data != d) {
+			tmp = tmp->next;
+		}
+		deleteNode(tmp);
+
+		while(head) {
+			cout << head->data << " ";
+			head = head->next;
+		}
+		cout << endl;
+	}
+}
 
 // This function should delete node from linked list. The function
 // may assume that node exists in linked list and is not last node
@@ -58,15 +96,15 @@ void deleteNode(Node *node)
    
    Node* p1 = node->next;
    if(!p1) {
-       node = NULL;
        delete node;
+       node = NULL;
        return;
    }
    
    node->data = p1->data;
    node->next = p1->next;
-   p1 = NULL;
    delete p1;
+   p1 = NULL;
    
 }
 
