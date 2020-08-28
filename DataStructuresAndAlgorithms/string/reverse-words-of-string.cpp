@@ -68,6 +68,25 @@ void reverse(string str)
     }
     cout << res << endl;
 }
+
+string reverseWords(string s)
+{
+    string res = "";
+    int i = 0, j = -1;
+    do
+    {
+        j++;
+        if(s[j]=='.' || s[j]=='\0') {
+            res = s.substr(i, j-i) + "." + res;
+            //cout << "res: " << res << endl;
+            i = j+1;
+        }
+
+    } while(j < s.length());
+    res = res.substr(0, res.length()-1);
+    return res;
+}
+
 int main() {
 	//code
 	int nT;
