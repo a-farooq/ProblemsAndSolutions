@@ -10,7 +10,7 @@ For each testcase, print the first non repeating character present in string. Pr
 
 Constraints:
 1 <= T <= 900
-1 <= N <= 104
+1 <= N <= 10^4
 
 Example:
 Input :
