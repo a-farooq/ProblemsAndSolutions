@@ -15,7 +15,7 @@ You task is to complete the function findIntersection() which takes the heads of
 
 Constraints:
 1 <= T <= 1000
-1 <= n,m <= 103
+1 <= n,m <= 10^3
 
 Expected time complexity: O(m+n)
 Expected auxiliary space: O(m+n)
