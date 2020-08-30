@@ -58,12 +58,7 @@ struct Node {
 // after inserting a new Node with value 'Key' into it.
 Node* insert(Node* root, int key)
 {
-    if(!root) {
-        Node *newnode = new Node(key);
-        return newnode;
-    }
-
-    Node* node = nullptr;
+    if(!root) return new Node(key);
 
     if(key < root->data) root->left = insert(root->left, key);
 
