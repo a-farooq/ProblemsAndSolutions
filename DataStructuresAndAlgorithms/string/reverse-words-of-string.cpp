@@ -87,6 +87,28 @@ string reverseWords(string s)
     return res;
 }
 
+void reverse_inplace(string str)
+{
+    int len = str.length();
+    int i = 0, j = len-1;
+    while(i<j) swap(str[i++], str[j--]);
+
+    i = 0;
+    int k = 0;
+    while(k < len) {
+        if(str[k]=='.') {
+            j = k-1;
+            while(i<j) swap(str[i++], str[j--]);
+            i = k+1;
+        }
+        k++;
+    }
+    j = k-1;
+    while(i<j) swap(str[i++], str[j--]);
+
+    cout << str << endl;
+}
+
 int main() {
 	//code
 	int nT;
@@ -97,6 +119,7 @@ int main() {
 	    cin >> str;
 	    //reverse(str);
 	    reverse_rec(str, true);
+	    reverse_inplace(str);
 	}
 	return 0;
 }
