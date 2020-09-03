@@ -53,9 +53,11 @@ int peakElement(int a[], int n)
         if(a[mid-1] < a[mid] && a[mid+1] < a[mid]) 
             return mid;
         
+		//if left of mid is bigger than mid, then left side will always have a peak.
         else if(a[mid-1]>a[mid])
             r=mid-1;
         
+		//if right of mid is bigger than mid, then right side will always have a peak.
         else if(a[mid+1]>a[mid]) 
             l=mid+1;
     }
