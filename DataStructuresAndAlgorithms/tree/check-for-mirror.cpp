@@ -28,6 +28,7 @@ Constraints:
 1 <= Number of nodes<= 10000
 -1000 <= Data of a node<= 1000
 
+Same as check-for-symmetric but for single tree
   ****/
 
 /* Node structure
