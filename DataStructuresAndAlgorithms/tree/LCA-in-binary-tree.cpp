@@ -74,13 +74,35 @@ bool lcaUtil(Node* root, int n, vector<Node*> vec, vector<Node*>& out)
     return false;
 }
 
+bool lcaUtil2(Node* root, int n, vector<Node*>& vec)
+{
+
+    if(!root) return false;
+
+    if(root->data == n) {
+        vec.push_back(root);
+        return true;
+    }
+
+    vec.push_back(root);
+
+    if(lcaUtil2(root->left, n, vec)) return true;
+    if(lcaUtil2(root->right, n, vec)) return true;
+
+    vec.pop_back();
+    return false;
+}
+
 Node* lca(Node* root ,int n1 ,int n2 )
 {
     if(!root) return nullptr;
 
     vector<Node*> vec1, vec2, vec;
-    bool res1 = lcaUtil(root, n1, vec, vec1);
-    bool res2 = lcaUtil(root, n2, vec, vec2);
+    //bool res1 = lcaUtil(root, n1, vec, vec1);
+    //bool res2 = lcaUtil(root, n2, vec, vec2);
+
+    bool res1 = lcaUtil2(root, n1, vec1);
+    bool res2 = lcaUtil2(root, n2, vec2);
 
     if(!res1 && !res2) return nullptr;
 
