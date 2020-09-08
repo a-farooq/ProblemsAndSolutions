@@ -47,6 +47,58 @@ Testcase1: Since only first element of matrix has 1 (at index 1,1) as value, so 
 #include <iostream>
 using namespace std;
 
+int a[1000][1000];
+int ar[1000], ac[1000];
+//globally declaring the arrays to avoid redeclaration.
+int main() {
+
+	int t;
+    cin >> t;
+    while(t--){
+    int r,c;
+
+    cin >> r >> c; //input the number of rows and columns
+
+    for(int i =0;i<r;i++){
+        for(int j =0;j<c;j++){
+            cin >> a[i][j]; //input the matrix
+        }
+    }
+
+    for(int i =0;i<r;i++){
+        for(int j =0;j<c;j++){
+            if(a[i][j] == 1){ //if a 1 is encountered in the matrix then
+                ar[i] = 1, ac[j] = 1; //our temp arrays for row and columns are set to 1
+            }
+        }
+    }
+
+    for(int i =0;i<r;i++){
+        for(int j =0;j<c;j++){
+            if(ar[i] == 1){
+                a[i][j] = 1;
+            }
+
+            if(ac[j] == 1){
+                a[i][j] = 1;
+            }
+        }
+    }
+
+    for(int i =0;i<r;i++){
+        for(int j =0;j<c;j++){
+            cout << a[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    memset(ac, 0, sizeof(ac));
+    memset(ar, 0, sizeof(ar));
+    }
+
+	return 0;
+}
+
 int main() {
 	int t;
 	cin >> t;
