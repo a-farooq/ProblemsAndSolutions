@@ -32,15 +32,47 @@ Constraints:
 1 <= N <= 10^5
   ****/
 
-/* Structure of the linked list node is as
+#include <iostream>
+using namespace std;
+
+// Structure of the linked list node is as
 struct Node
 {
     int data;
     struct Node* next;
     Node(int x) { data = x;  next = NULL; }
 };
-*/
 
+
+Node* mergeSort(Node* head);
+Node* findmid(Node*);
+void print(Node*);
+Node* mergeList(Node*, Node*);
+
+int main()
+{
+	int t;
+	cin >> t;
+	while(t--)
+	{
+		int n;
+		Node* head = nullptr;
+		Node* tail = nullptr;
+		cin >> n;
+		for(int i=0; i<n; i++)
+		{
+			int d;
+			cin >> d;
+			if(!head) tail = head = new Node(d);
+			else {
+				tail->next = new Node(d);
+				tail = tail->next;
+			}
+		}
+		head = mergeSort(head);
+		print(head);
+	}
+}
 Node* findmid(Node* head)
 {
     if(!head || !head->next) return head;
@@ -92,15 +124,15 @@ Node* mergeList(Node* p1, Node* p2)
         p = p->next;
         //print(newhead);
     }
-    while(p1) {
+    if(p1) {
         p->next = p1;
-        p1 = p1->next;
-        p = p->next;
+        //p1 = p1->next;
+        //p = p->next;
     }
-    while(p2) {
+	else if(p2) {
         p->next = p2;
-        p2 = p2->next;
-        p = p->next;
+        //p2 = p2->next;
+        //p = p->next;
     }
 
     //print(newhead);
