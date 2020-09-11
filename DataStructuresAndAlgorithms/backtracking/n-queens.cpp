@@ -50,12 +50,19 @@ void nqueens(vector<vector<int>> a, int n, int i, int j, string res)
         found = true;
     }
     else {
-        for(int i2 = i; i2 <= n; i2++) a[i2][j] = 1;
+		//set the column j
+        for(int i2 = i; i2 <= n; i2++) 
+			a[i2][j] = 1;
+
+		//set the diagonal till right end
         for(int i2 = i, j2 = j; i2 <= n && j2 <= n; i2++, j2++)
             a[i2][j2] = 1;
+
+		//set the diagonal till left end
         for(int i2 = i, j2 = j; i2 <= n && j2 > 0; i2++, j2--)
             a[i2][j2] = 1;
 
+		//find next column spot in next row
         for(int j = 1; j <= n; j++)
             nqueens(a, n, i+1, j, res);
     }
