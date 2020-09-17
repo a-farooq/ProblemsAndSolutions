@@ -60,6 +60,24 @@ vector<int> levelOrder(Node* node)
 
     queue<Node*> levelq;
     levelq.push(node);
+
+	while(!levelq.empty())
+    {
+        int size = levelq.size();
+
+        while(size--) {
+            Node* node = levelq.front();
+            levelq.pop();
+            //cout << node->data << " ";
+            res.push_back(node->data);
+
+            if(node->left)
+                levelq.push(node->left);
+            if(node->right)
+                levelq.push(node->right);
+        }
+    }
+	/*
     levelq.push(nullptr);
 
     while(!levelq.empty())
@@ -76,6 +94,6 @@ vector<int> levelOrder(Node* node)
             if(n->left) levelq.push(n->left);
             if(n->right) levelq.push(n->right);
         }
-    }
+    }*/
     return res;
 }
