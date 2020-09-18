@@ -57,12 +57,6 @@ int main() {
 	        vec.push_back(make_pair(it.second, it.first));
 	    }
 	    sort(vec.begin(), vec.end(), [](pair<int,string> &a, pair<int,string>&b){ return a.first > b.first; });
-	    /*
-	    for(auto it : vec) {
-	        cout << it.first << ", "<< it.second<< endl;
-	        //mmap.emplace(it.second, it.first);
-	    }
-	    */
 	    cout << vec[1].second << endl;
 	}
 	return 0;
