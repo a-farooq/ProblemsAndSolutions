@@ -42,4 +42,5 @@ int main()
 {
 	SmartPtr<Student> sp(new Student());
 	cout << sp->getName() << endl;
+	cout << (*sp).getName() << endl;
 }
