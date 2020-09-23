@@ -35,6 +35,30 @@ For each input, output should be in a single line.
 
 #include <iostream>
 using namespace std;
+// User function template for C++
+
+// This function finds the buy sell schedule for maximum profit
+void stockBuySell(int price[], int n)
+{
+    int start=0;
+    int end = 0;
+    bool profit=false;
+    for(int i=0; i<n;i++) {
+        if((i==0 || price[i-1]>price[i]) && price[i+1]>price[i]) {
+            start=i;
+        }
+        else if((i==n-1 || price[i]>price[i+1]) && price[i]>price[i-1]) {
+            end=i;
+            if(start!=end) {
+                cout << "("<<start<<" "<<end<<") ";
+                profit=true;
+            }
+        }
+    }
+
+    if(!profit) cout << "No Profit";
+    cout << endl;
+}
 
 int main() {
     int t;
