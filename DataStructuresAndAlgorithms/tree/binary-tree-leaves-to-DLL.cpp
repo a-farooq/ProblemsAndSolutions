@@ -96,11 +96,39 @@ bool convertToDLLUtil(Node* root, Node** head)
 
     return false;
 }
+
+Node* convertToDLLUtil2(Node* root, Node** head)
+{
+    if(!root)
+        return nullptr;
+
+    if(!root->left && !root->right) {
+        if(*head) {
+            (*head)->left = root;
+        }
+        root->right = *head;
+        *head = root;
+        //return true;
+        return nullptr;
+    }
+
+    root->right = convertToDLLUtil2(root->right, head);
+    //if(ret) {
+    //    root->right = nullptr;
+    //}
+
+    root->left = convertToDLLUtil2(root->left, head);
+    //if(ret) {
+    //    root->left = nullptr;
+    //}
+
+    return root;
+}
 // return the head of the DLL and remove those node from the tree as well.
 Node * convertToDLL(Node *root)
 {
     Node* head = nullptr;
-    convertToDLLUtil(root, &head);
+    convertToDLLUtil2(root, &head);
     head->left = nullptr;
     return head;
 }
