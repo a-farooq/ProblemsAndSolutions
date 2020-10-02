@@ -38,6 +38,39 @@ if a number is not found, this is the answer
 #include <unordered_set>
 using namespace std;
 
+// Functio to find first smallest positive
+// missing number in the array
+int missingNumber(int arr[], int n) {
+
+    // Your code here
+    sort(arr, arr+n);
+    //for(int i=0; i<n; i++) cout << arr[i] << " "; cout << endl;
+
+    int i=0;
+    for(; i<n; i++)
+        if(arr[i]>0)
+            break;
+
+    if(i==n) return 1;
+
+    int k=0;
+    int j=i;
+	//array can have duplicates
+    for(; j<n; j++) {
+        if(arr[j]>k) {
+            if(arr[j] > ++k)
+                break;
+        }
+        /*
+        if(arr[j]==k+1)
+            k++;
+        else if(arr[j] != k)
+            break;*/
+    }
+    //return k+1;
+    return j==n?k+1:k;
+}
+
 int main() {
 	int t;
 	cin >> t;
