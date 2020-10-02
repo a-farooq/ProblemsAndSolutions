@@ -35,6 +35,10 @@ If this element is the first element, then count the number of elements in the c
 If the count is more than the previous longest subsequence found, then update this.
 ****/
 
+#include <iostream>
+#include <unordered_set>
+using namespace std;
+
 // function to find longest consecutive subsequence
 // n : size of array
 // arr[] : input array
@@ -58,4 +62,39 @@ int findLongestConseqSubseq(int a[], int n)
         }
     }
     return maxi;
+}
+
+int main() {
+	//code
+	int t;
+	cin >> t;
+	while(t--) {
+	    int n;
+	    cin >> n;
+	    int a[n];
+	    unordered_set<int> uset;
+	    for(int i=0; i<n; i++) {
+	        cin >> a[i];
+	        uset.insert(a[i]);
+	    }
+
+
+	    //for(int i=0; i<n; i++)
+	    //    uset.insert(a[i]);
+
+	    int maxi=0;
+	    for(int i=0; i<n; i++) {
+	        if(uset.find(a[i]-1) == uset.end()) {
+	            int len=0;
+	            int num=a[i];
+	            while(uset.find(num) != uset.end()) {
+	                len++;
+	                num++;
+	            }
+	            maxi = max(maxi, len);
+	        }
+	    }
+	    cout << maxi << endl;
+	}
+	return 0;
 }
