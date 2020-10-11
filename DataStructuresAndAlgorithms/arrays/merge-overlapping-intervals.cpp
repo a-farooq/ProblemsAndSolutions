@@ -68,10 +68,13 @@ vector<pair<int,int>> overlappedInterval(vector<pair<int,int>> vec, int n)
         }
     }
 	//removing reduntant pairs from back
-    j--;
+    /*
+	j--;
     while(j>i) {
         vec.pop_back();
         j--;
     }
+	*/
+	vec.erase(vec.begin()+i+1, vec.end());
     return vec;
 }
