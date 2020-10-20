@@ -48,23 +48,28 @@ int main() {
 	        cin >> a2[i];
 
 	    auto i = 0, j = 0, k = 0;
-	    vector<int> vec;
+	    //vector<int> vec;
+		int m1=0, m2=0;
 	    while(i < n && j < n) {
 	        if(a1[i]<=a2[j]) {
-	            vec.push_back(a1[i]);
+	            //vec.push_back(a1[i]);
+				m1=m2;
+				m2=a1[i];
 	            i++;
 	        }
 	        else {
-	            vec.push_back(a2[j]);
+	            //vec.push_back(a2[j]);
+				m1=m2;
+				m2=a2[j];
 	            j++;
 	        }
+			if(k==n) break;
 	        k++;
-
-	        if(k==n+1) break;
 	    }
-	    if(i < n) vec.push_back(a1[i]);
-	    if(j < n) vec.push_back(a2[j]);
-	    cout << vec[n-1]+vec[n] << endl;
+	    //if(i < n) vec.push_back(a1[i]);
+	    //if(j < n) vec.push_back(a2[j]);
+	    //cout << vec[n-1]+vec[n] << endl;
+		cout << m1+m2 << endl;
 	}
 	return 0;
 }
