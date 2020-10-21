@@ -31,38 +31,36 @@ Testcase 1: The longest palindrome string present in the given string is "aabbaa
 #include <cstring>
 using namespace std;
 
-string max_len_pal(string st)
+
+// User function template for C++
+
+// A : given string
+// return the required string
+string longest_palindrome(string st)
 {
-    int n = st.length();
-    bool dp[n][n];
-
-    memset(dp, false, n*n);
-
-    for(int i=0; i<n; i++)
-        dp[i][i]=true;
-
-    int maxi = 1;
     int start=0;
-    for(int k=2; k<=n; k++) {
-        for(int i=0; i<=n-k; i++) {
-            int j=i+k-1;
-            if(st[i]==st[j] && k==2) {
-                dp[i][j]=true;
-                if(maxi<k) {
-                    start=i;
-                    maxi=k;
-                }
-            }
-            else if(st[i]==st[j] && dp[i+1][j-1]) {
-                dp[i][j]=true;
-                if(maxi<k) {
-                    start=i;
-                    maxi=k;
-                }
+    int maxlen=0;
+
+    for(int i=0; i<st.length(); i++) {
+        for(int len=st.length()-i; len>0 && len>maxlen; len--) {
+            //cout << "i: "<<i<<", j: "<<j<<endl;
+            string subst = st.substr(i,len);
+            
+            string substr = subst;
+            reverse(substr.begin(), substr.end());
+            
+            //cout << subst << "--"<<substr<<endl;
+
+            if(subst==substr) {
+                maxlen=len;
+                //cout << "i: "<<i<<", j: "<<j<<endl;
+                //cout << "maxlen: "<<maxlen<<endl;
+                start=i;
+                break;
             }
         }
     }
-    return st.substr(start,maxi);
+    return st.substr(start, maxlen);
 }
 
 int main() {
@@ -72,7 +70,7 @@ int main() {
 	{
 	    string st;
 	    cin >> st;
-	    cout << max_len_pal(st) << endl;
+	    cout << longest_palindrome(st) << endl;
 	}
 	return 0;
 }
