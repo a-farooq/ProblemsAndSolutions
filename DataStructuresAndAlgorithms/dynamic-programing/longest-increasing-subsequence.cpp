@@ -60,8 +60,8 @@ int main() {
 	    int lis[n];
 	    fill_n(lis, n, 1);
 
-	    int res = 0;
-	    for(int i=0; i<n; i++) {
+	    int res = 1;
+	    for(int i=1; i<n; i++) {
 	        for(int j=0; j<i; j++) {
 	            if(a[j]<a[i] && lis[i]<lis[j]+1)
 	                lis[i]=lis[j]+1;
