@@ -25,6 +25,7 @@ class Array
 		if(idx<m_size) {
 			return m_ptr[idx];
 		}
+		throw new string("Index out of bound");
 		cout << "Index out of bound\n";
 		exit(0);
 		//return -1;
@@ -40,11 +41,21 @@ class Array
 
 int main()
 {
-	int a[5] = {5, 3, 9, 0, 2};
-	Array arr(a, 5);
-	arr.print();
-	cout << "arr[3]: "<<arr[3] << endl;
-	//arr[5] = 1; //Error: index out of bound
-	arr[3] = 1;
-	arr.print();
+	try {
+		int a[5] = {5, 3, 9, 0, 2};
+		Array arr(a, 5);
+		arr.print();
+		cout << "arr[3]: "<<arr[3] << endl;
+		arr[5] = 1; //Error: index out of bound
+		arr[3] = 1;
+		arr.print();
+	}
+	catch(std::exception& e)
+	{
+		cout << e.what() << endl;
+	}
+	catch(string* str)
+	{
+		cout << "Exception: " << *str << endl;
+	}
 }
