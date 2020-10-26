@@ -4,12 +4,14 @@
 #include <vector>
 using namespace std;
 
-void memcopy(void* dest, void* src, int size)
+void memcopy(void* dest, void* src, int bytes)
 {
+	//char takes 1 byte
+	//have to copy byte by byte
 	char* dest_t = (char*)dest;
 	char* src_t = (char*)src;
 
-	for(int i=0; i<size; i++)
+	for(int i=0; i<bytes; i++)
 		dest_t[i]=src_t[i];
 }
 
