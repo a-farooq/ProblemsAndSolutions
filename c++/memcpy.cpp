@@ -32,7 +32,8 @@ int main()
 	//vector<int> vec2(vec1.size());
 	int vec1[] = {87, 453, 890, 73123};
 	int vec2[4];
-	memcopy(&vec2, &vec1, sizeof(vec1));
+	//memcopy(&vec2, &vec1, sizeof(vec1));
+	memcopy(vec2, vec1, sizeof(vec1));
 	cout << sizeof(vec1) << endl;
 	for(auto val:vec2) cout << val <<" "; cout << endl;
 }
