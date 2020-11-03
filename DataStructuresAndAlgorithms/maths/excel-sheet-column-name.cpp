@@ -51,12 +51,15 @@ int main() {
 	        int m=n%26;
 	        if(m==0) {
 	            st += 'Z';
-	            n=n/26-1;
+
+				n--;
+	            //n=n/26-1;
 	        }
             else {
     	        st += 'A'+m-1;
-	            n=n/26;
+	            //n=n/26;
             }
+			n/=26;
 	    }
 	    reverse(st.begin(), st.end());
 	    cout << st << endl;
