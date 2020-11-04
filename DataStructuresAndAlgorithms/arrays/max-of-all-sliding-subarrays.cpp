@@ -50,13 +50,13 @@ void sliding_window_deque(int*a, int n, int k)
 
 	for(int j=k; j< n; j++) {
 
-		//remove from front if j-i>=k to keep only k elements in window
+		//remove from front if j-i(i.e. dq.front())>=k to keep only k elements in window
 		//this loop maintains window of k size
-	    while(!dq.empty() && dq.front()<=j-k)
+	    while(!dq.empty() && j-dq.front()>=k)
 	        dq.pop_front();
 
 		//front will always have biggest
-		//removes all smaller elements than incoming element
+		//removes all elements smaller than incoming element
 	    while(!dq.empty() && a[j]>=a[dq.back()])
             dq.pop_back();
 

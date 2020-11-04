@@ -25,11 +25,13 @@ Output:
 1 4 2 3
 **********/
 #include <iostream>
+#include <array>
 using namespace std;
 
 int main() {
 	//code
-	int t, n, a[105], flag;
+	int t, n, flag; //a[105], flag;
+	array<int, 105> a;
 	cin >> t;
 	while(t--)
 	{
