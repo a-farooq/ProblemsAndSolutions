@@ -49,6 +49,8 @@ struct Node
 };
  */
 
+//only one node must be visible on each level
+//so keep track of max level printed
 void leftViewUtil(Node* root, int level, int& maxlevel)
 {
     if(!root) return;

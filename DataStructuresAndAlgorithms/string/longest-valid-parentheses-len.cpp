@@ -52,6 +52,42 @@ The longest valid substring is "()(())". Length = 6
 #include <stack>
 using namespace std;
 
+int main()
+{
+    int t;
+    string sp;
+    cin >> t;
+    while(t--)
+    {
+        cin >> sp;
+        int i = 0;
+        int sum = 0, max = 0;
+
+		stack<int> stk;
+        stk.push(-1);
+        while(i < sp.length())
+        {
+            char par = sp[i];
+            if(par=='(') {
+                stk.push(i);
+            }
+            else {
+                stk.pop();
+                if(stk.empty())
+                    stk.push(i);
+                else {
+                    int j = stk.top();
+                    max = max < i-j ? i-j : max;
+                }
+            }
+            ++i;
+            //cout << max << endl;
+        }
+        cout << max << endl;
+    }
+}
+
+/*
 int main() {
 	//code
 	int t;
@@ -104,3 +140,4 @@ int main() {
 	}
 	return 0;
 }
+*/
