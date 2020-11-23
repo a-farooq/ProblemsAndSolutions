@@ -38,6 +38,7 @@ public:
 
 };
 
+//void fun(SmartPtr<Student> sp) //crash
 void fun(SmartPtr<Student>& sp)
 {
 	cout << sp->getName() << endl;
